@@ -1,0 +1,12 @@
+diff -urN nautilus-sendto-0.3.orig/src/plugins/evolution.c nautilus-sendto-0.3/src/plugins/evolution.c
+--- nautilus-sendto-0.3.orig/src/plugins/evolution.c	2005-02-11 11:46:48.902338160 +0100
++++ nautilus-sendto-0.3/src/plugins/evolution.c	2005-02-11 11:47:16.231183544 +0100
+@@ -204,6 +204,8 @@
+ 		evo_cmd = g_find_program_in_path ("evolution-1.5");
+ 		if (evo_cmd == NULL)
+ 			evo_cmd = g_find_program_in_path ("evolution-2.0");
++			if (evo_cmd == NULL)
++				evo_cmd = g_find_program_in_path ("evolution-2.2");
+ 	}
+ 	g_string_append_printf (mailto,"?attach=\"%s\"",file_list->data);
+ 	for (l = file_list->next ; l; l=l->next){				
