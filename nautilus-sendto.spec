@@ -18,6 +18,7 @@ BuildRequires:	libglade2-devel >= 2.4.0
 BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libgnomeui >= 2.7.0
 BuildRequires:	nautilus-devel >= 2.8.0
+BuildRequires:	pkgconfig
 Requires:	file-roller
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
