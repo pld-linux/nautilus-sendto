@@ -1,4 +1,5 @@
-Summary:	Nautilus integration with evolution and gaim
+Summary:	Nautilus integration with Evolution and Gaim
+Summary(pl):	Integracja Nautilusa z Evolution i Gaimem
 Name:		nautilus-sendto
 Version:	0.3
 Release:	1
@@ -23,8 +24,12 @@ Requires:	file-roller
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This application provide integration beetween nautilus, evolution and
-gaim.
+This application provide integration beetween Nautilus, Evolution and
+Gaim.
+
+%description -l pl
+Ta aplikacja dostarcza integracjê pomiêdzy Nautilusem, Evolution i
+Gaimem.
 
 %prep
 %setup -q
