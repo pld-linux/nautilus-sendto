@@ -9,15 +9,16 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.3/%{name}-%{ve
 # Source0-md5:	946aea5c775308f0472bdf9d1e4048c7
 Patch0:		%{name}-find-evolution-2.2.patch
 URL:		http://www.es.gnome.org/~telemaco/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.0.0
 BuildRequires:	gaim-devel >= 1.0.0
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	intltool
-BuildRequires:	libglade2-devel >= 2.4.0
 BuildRequires:	libbonobo-devel >= 2.6.0
+BuildRequires:	libglade2-devel >= 2.4.0
 BuildRequires:	libgnomeui >= 2.7.0
+BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.8.0
 BuildRequires:	pkgconfig
 Requires:	file-roller
@@ -36,6 +37,7 @@ Gaimem.
 %patch0 -p1
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
@@ -59,9 +61,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/gaim/*
+%attr(755,root,root) %{_libdir}/gaim/*.so
 %dir %{_libdir}/%{name}
-%attr(755,root,root) %{_libdir}/%{name}/plugins
-%attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*
+%dir %{_libdir}/%{name}/plugins
+%attr(755,root,root) %{_libdir}/%{name}/plugins/*.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/glade
