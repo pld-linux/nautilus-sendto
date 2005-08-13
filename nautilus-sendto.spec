@@ -2,7 +2,7 @@ Summary:	Nautilus integration with Evolution and Gaim
 Summary(pl):	Integracja Nautilusa z Evolution i Gaimem
 Name:		nautilus-sendto
 Version:	0.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.4/%{name}-%{version}.tar.bz2
@@ -51,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/{gaim,nautilus/extensions-1.0,nautilus-sendto/plugins}/*.la
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name}
 
