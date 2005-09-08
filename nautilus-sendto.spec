@@ -2,7 +2,7 @@ Summary:	Nautilus integration with Evolution and Gaim
 Summary(pl):	Integracja Nautilusa z Evolution i Gaimem
 Name:		nautilus-sendto
 Version:	0.4
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.4/%{name}-%{version}.tar.bz2
