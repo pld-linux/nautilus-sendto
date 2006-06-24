@@ -1,29 +1,29 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl):	Menu kontekstowe nautilusa do wysy³ania plików
 Name:		nautilus-sendto
-Version:	0.5
+Version:	0.6
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	e43a5e51270ef3e0f4743ed4d23f7409
-Patch0:		%{name}-find-evolution-2.2.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	5b4196c1587b98980529ce16ba70b599
+Patch0:		%{name}-gaim20.patch
+Patch1:		%{name}-gajim.patch
 URL:		http://www.es.gnome.org/~telemaco/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.5.3
-BuildRequires:	gaim-devel >= 1.5.0
-BuildRequires:	gnome-bluetooth-devel >= 0.6.0
-BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	evolution-data-server-devel >= 1.7.3
+BuildRequires:	gaim-devel >= 2.0
+BuildRequires:	gnome-bluetooth-devel >= 0.7.0
+BuildRequires:	gtk+2-devel >= 2:2.9.4
 BuildRequires:	intltool
-BuildRequires:	libbonobo-devel >= 2.6.0
-BuildRequires:	libglade2-devel >= 2.4.0
-BuildRequires:	libgnomeui >= 2.13.0
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeui >= 2.15.1
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.13.3
+BuildRequires:	nautilus-devel >= 2.15.2
 BuildRequires:	pkgconfig
 Requires:	file-roller
-Requires:	nautilus >= 2.13.3
+Requires:	nautilus >= 2.15.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,7 +39,7 @@ Summary:	nautilus-sendto Evolution plugin
 Summary(pl):	Wtyczka nautilus-sendto dla Evolution
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	evolution >= 2.5.3
+Requires:	evolution >= 2.7.3
 
 %description evolution
 A nautilus-sendto plugin for sending files via Evolution.
@@ -52,20 +52,34 @@ Summary:	nautilus-sendto Gaim plugin
 Summary(pl):	Wtyczka nautilus-sendto dla Gaima
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	gaim >= 1.5.0
+Requires:	gaim >= 2.0
 
 %description gaim
 A nautilus-sendto plugin for sending files via Gaim.
 
-%description  gaim -l pl
+%description gaim -l pl
 Wtyczka nautilus-sentdo do wysy³ania plików poprzez Gaima.
+
+%package gajim
+Summary:	nautilus-sendto Gajim plugin
+Summary(pl):	Wtyczka nautilus-sendto dla Gajima
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Requires:	dbus >= 0.62
+Requires:	gajim >= 0.10.1
+
+%description gajim
+A nautilus-sendto plugin for sending files via Gajim.
+
+%description gajim -l pl
+Wtyczka nautilus-sentdo do wysy³ania plików poprzez Gajima.
 
 %package gnome-bluetooth
 Summary:	nautilus-sendto GNOME Bluetooth plugin
 Summary(pl):	Wtyczka nautilus-sendto dla GNOME Bluetooth
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	gnome-bluetooth >= 0.6.0
+Requires:	gnome-bluetooth >= 0.7.0
 
 %description gnome-bluetooth
 A nautilus-sendto plugin for sending files via GNOME Bluetooth.
@@ -73,16 +87,30 @@ A nautilus-sendto plugin for sending files via GNOME Bluetooth.
 %description  gnome-bluetooth -l pl
 Wtyczka nautilus-sentdo do wysy³ania plików poprzez GNOME Bluetooth.
 
+%package sylpheed
+Summary:	nautilus-sendto Sylpheed plugin
+Summary(pl):	Wtyczka nautilus-sendto dla Sylpheeda
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+
+%description sylpheed
+A nautilus-sendto plugin for sending files via Sylpheed.
+
+%description sylpheed -l pl
+Wtyczka nautilus-sentdo do wysy³ania plików poprzez Sylpheeda.
+
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--with-gajim
 %{__make}
 
 %install
@@ -92,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/{gaim,nautilus/extensions-1.0,nautilus-sendto/plugins}/*.la
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+#rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name}
 
@@ -111,13 +139,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files evolution
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libevolution.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstevolution.so
 
 %files gaim
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/gaim/*.so
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libgaim.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstgaim.so
+
+%files gajim
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstgajim.so
 
 %files gnome-bluetooth
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libbluetooth.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstbluetooth.so
+
+%files sylpheed
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstsylpheed.so
