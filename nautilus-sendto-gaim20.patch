@@ -1,0 +1,35 @@
+diff -aurN nautilus-sendto-0.6.orig/gaim_plugin/nautilus-sendto-plugin.c nautilus-sendto-0.6/gaim_plugin/nautilus-sendto-plugin.c
+--- nautilus-sendto-0.6.orig/gaim_plugin/nautilus-sendto-plugin.c	2005-01-27 11:44:40.000000000 +0100
++++ nautilus-sendto-0.6/gaim_plugin/nautilus-sendto-plugin.c	2006-06-24 22:50:34.980991920 +0200
+@@ -26,6 +26,22 @@
+ #include <config.h>
+ #endif
+ 
++#ifdef ENABLE_NLS
++#  include <locale.h>
++#  include <libintl.h>
++#  define _(x) dgettext(PACKAGE, x)
++#  ifdef dgettext_noop
++#    define N_(String) dgettext_noop (PACKAGE, String)
++#  else
++#    define N_(String) (String)
++#  endif
++#else
++#  include <locale.h>
++#  define N_(String) (String)
++#  define _(x) (x)
++#  define ngettext(Singular, Plural, Number) ((Number == 1) ? (Singular) : (Plural))
++#endif
++
+ #ifndef GAIM_PLUGINS
+ #define GAIM_PLUGINS
+ #endif
+@@ -37,7 +53,7 @@
+ #include <unistd.h>
+ #include <dirent.h>
+ 
+-#include "internal.h"
++#include "plugin.h"
+ #include "conversation.h"
+ #include "core.h"
+ #include "debug.h"
