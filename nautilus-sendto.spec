@@ -5,7 +5,7 @@ Version:	0.8
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.7/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	19165c7404c4956efd4366a8ebe3ddfa
 Patch0:		%{name}-gaim20.patch
 Patch1:		%{name}-gajim.patch
