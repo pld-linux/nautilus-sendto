@@ -1,6 +1,6 @@
-diff -aurN nautilus-sendto-0.6.orig/gaim_plugin/nautilus-sendto-plugin.c nautilus-sendto-0.6/gaim_plugin/nautilus-sendto-plugin.c
---- nautilus-sendto-0.6.orig/gaim_plugin/nautilus-sendto-plugin.c	2005-01-27 11:44:40.000000000 +0100
-+++ nautilus-sendto-0.6/gaim_plugin/nautilus-sendto-plugin.c	2006-06-24 22:50:34.980991920 +0200
+diff -urN nautilus-sendto-0.8/gaim_plugin/nautilus-sendto-plugin.c nautilus-sendto-0.8.new/gaim_plugin/nautilus-sendto-plugin.c
+--- nautilus-sendto-0.8/gaim_plugin/nautilus-sendto-plugin.c	2006-10-11 17:49:18.000000000 +0200
++++ nautilus-sendto-0.8.new/gaim_plugin/nautilus-sendto-plugin.c	2006-10-11 20:08:04.000000000 +0200
 @@ -26,6 +26,22 @@
  #include <config.h>
  #endif
@@ -24,11 +24,10 @@ diff -aurN nautilus-sendto-0.6.orig/gaim_plugin/nautilus-sendto-plugin.c nautilu
  #ifndef GAIM_PLUGINS
  #define GAIM_PLUGINS
  #endif
-@@ -37,7 +53,7 @@
+@@ -38,6 +54,7 @@
  #include <unistd.h>
  #include <dirent.h>
  
--#include "internal.h"
 +#include "plugin.h"
  #include "conversation.h"
  #include "core.h"
