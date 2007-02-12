@@ -1,5 +1,5 @@
 Summary:	Nautilus context menu for sending files
-Summary(pl):	Menu kontekstowe nautilusa do wysy砤nia plik體
+Summary(pl.UTF-8):   Menu kontekstowe nautilusa do wysy艂ania plik贸w
 Name:		nautilus-sendto
 Version:	0.8
 Release:	1
@@ -31,13 +31,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 nautilus-sendto provides a Nautilus context menu for sending
 files via other desktop applications.
 
-%description -l pl
+%description -l pl.UTF-8
 nautilus-sendto dostarcza menu kontekstowe dla Nautilusa do
-wysy砤nia plik體 poprzez inne aplikacje biurkowe.
+wysy艂ania plik贸w poprzez inne aplikacje biurkowe.
 
 %package evolution
 Summary:	nautilus-sendto Evolution plugin
-Summary(pl):	Wtyczka nautilus-sendto dla Evolution
+Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Evolution
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	evolution >= 2.7.3
@@ -45,12 +45,12 @@ Requires:	evolution >= 2.7.3
 %description evolution
 A nautilus-sendto plugin for sending files via Evolution.
 
-%description evolution -l pl
-Wtyczka nautilus-sentdo do wysy砤nia plik體 poprzez Evolution.
+%description evolution -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysy艂ania plik贸w poprzez Evolution.
 
 %package gaim
 Summary:	nautilus-sendto Gaim plugin
-Summary(pl):	Wtyczka nautilus-sendto dla Gaima
+Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Gaima
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gaim >= 2.0
@@ -58,12 +58,12 @@ Requires:	gaim >= 2.0
 %description gaim
 A nautilus-sendto plugin for sending files via Gaim.
 
-%description gaim -l pl
-Wtyczka nautilus-sentdo do wysy砤nia plik體 poprzez Gaima.
+%description gaim -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysy艂ania plik贸w poprzez Gaima.
 
 %package gajim
 Summary:	nautilus-sendto Gajim plugin
-Summary(pl):	Wtyczka nautilus-sendto dla Gajima
+Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Gajima
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	dbus >= 0.62
@@ -72,12 +72,12 @@ Requires:	gajim >= 0.10.1
 %description gajim
 A nautilus-sendto plugin for sending files via Gajim.
 
-%description gajim -l pl
-Wtyczka nautilus-sentdo do wysy砤nia plik體 poprzez Gajima.
+%description gajim -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysy艂ania plik贸w poprzez Gajima.
 
 %package gnome-bluetooth
 Summary:	nautilus-sendto GNOME Bluetooth plugin
-Summary(pl):	Wtyczka nautilus-sendto dla GNOME Bluetooth
+Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla GNOME Bluetooth
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnome-bluetooth >= 0.7.0
@@ -85,20 +85,20 @@ Requires:	gnome-bluetooth >= 0.7.0
 %description gnome-bluetooth
 A nautilus-sendto plugin for sending files via GNOME Bluetooth.
 
-%description  gnome-bluetooth -l pl
-Wtyczka nautilus-sentdo do wysy砤nia plik體 poprzez GNOME Bluetooth.
+%description  gnome-bluetooth -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysy艂ania plik贸w poprzez GNOME Bluetooth.
 
 %package sylpheed
 Summary:	nautilus-sendto Sylpheed plugin
-Summary(pl):	Wtyczka nautilus-sendto dla Sylpheeda
+Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Sylpheeda
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 
 %description sylpheed
 A nautilus-sendto plugin for sending files via Sylpheed.
 
-%description sylpheed -l pl
-Wtyczka nautilus-sentdo do wysy砤nia plik體 poprzez Sylpheeda.
+%description sylpheed -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysy艂ania plik贸w poprzez Sylpheeda.
 
 %prep
 %setup -q
