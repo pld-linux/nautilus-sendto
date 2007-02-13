@@ -1,5 +1,5 @@
 Summary:	Nautilus context menu for sending files
-Summary(pl.UTF-8):   Menu kontekstowe nautilusa do wysyłania plików
+Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
 Version:	0.8
 Release:	1
@@ -37,7 +37,7 @@ wysyłania plików poprzez inne aplikacje biurkowe.
 
 %package evolution
 Summary:	nautilus-sendto Evolution plugin
-Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Evolution
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Evolution
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	evolution >= 2.7.3
@@ -50,7 +50,7 @@ Wtyczka nautilus-sentdo do wysyłania plików poprzez Evolution.
 
 %package gaim
 Summary:	nautilus-sendto Gaim plugin
-Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Gaima
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Gaima
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gaim >= 2.0
@@ -63,7 +63,7 @@ Wtyczka nautilus-sentdo do wysyłania plików poprzez Gaima.
 
 %package gajim
 Summary:	nautilus-sendto Gajim plugin
-Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Gajima
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Gajima
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	dbus >= 0.62
@@ -77,7 +77,7 @@ Wtyczka nautilus-sentdo do wysyłania plików poprzez Gajima.
 
 %package gnome-bluetooth
 Summary:	nautilus-sendto GNOME Bluetooth plugin
-Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla GNOME Bluetooth
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla GNOME Bluetooth
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnome-bluetooth >= 0.7.0
@@ -90,7 +90,7 @@ Wtyczka nautilus-sentdo do wysyłania plików poprzez GNOME Bluetooth.
 
 %package sylpheed
 Summary:	nautilus-sendto Sylpheed plugin
-Summary(pl.UTF-8):   Wtyczka nautilus-sendto dla Sylpheeda
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Sylpheeda
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 
