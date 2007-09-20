@@ -1,19 +1,19 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	0.10
-Release:	1
+Version:	0.12
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	cc47d4364d71d6f35776c5634e2f1ed1
+Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	9ec9a476be9a1c24ceddcfd76c6b3be2
 Patch0:		%{name}-gaim20.patch
 Patch1:		%{name}-gajim.patch
 URL:		http://www.es.gnome.org/~telemaco/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.9.92
-BuildRequires:	gaim-devel >= 2.0
+BuildRequires:	pidgin-devel >= 2.0
 BuildRequires:	gnome-bluetooth-devel >= 0.7.0
 BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	intltool
@@ -48,18 +48,19 @@ A nautilus-sendto plugin for sending files via Evolution.
 %description evolution -l pl.UTF-8
 Wtyczka nautilus-sentdo do wysyłania plików poprzez Evolution.
 
-%package gaim
-Summary:	nautilus-sendto Gaim plugin
-Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Gaima
+%package pidgin
+Summary:	nautilus-sendto Pidgin plugin
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Pidgina
 Group:		X11/Applications
+Obsoletes:	nautilus-sendto-gaim
 Requires:	%{name} = %{version}-%{release}
-Requires:	gaim >= 2.0
+Requires:	pidgin >= 2.0
 
-%description gaim
-A nautilus-sendto plugin for sending files via Gaim.
+%description pidgin
+A nautilus-sendto plugin for sending files via Pidgin.
 
-%description gaim -l pl.UTF-8
-Wtyczka nautilus-sentdo do wysyłania plików poprzez Gaima.
+%description pidgin -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysyłania plików poprzez Pidgina.
 
 %package gajim
 Summary:	nautilus-sendto Gajim plugin
@@ -120,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/{gaim,nautilus/extensions-1.0,nautilus-sendto/plugins}/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/{pidgin,nautilus/extensions-1.0,nautilus-sendto/plugins}/*.la
 
 %find_lang %{name}
 
@@ -149,10 +150,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstevolution.so
 
-%files gaim
+%files pidgin
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/gaim/*.so
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstgaim.so
+%attr(755,root,root) %{_libdir}/pidgin/*.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstpidgin.so
 
 %files gajim
 %defattr(644,root,root,755)
