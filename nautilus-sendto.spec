@@ -13,7 +13,6 @@ URL:		http://www.es.gnome.org/~telemaco/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.9.92
-BuildRequires:	pidgin-devel >= 2.0
 BuildRequires:	gnome-bluetooth-devel >= 0.7.0
 BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	intltool
@@ -21,6 +20,7 @@ BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui >= 2.18.0
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.18.0.1
+BuildRequires:	pidgin-devel >= 2.0
 BuildRequires:	pkgconfig
 Requires(post,preun):	GConf2
 Requires:	file-roller
@@ -48,20 +48,6 @@ A nautilus-sendto plugin for sending files via Evolution.
 %description evolution -l pl.UTF-8
 Wtyczka nautilus-sentdo do wysyłania plików poprzez Evolution.
 
-%package pidgin
-Summary:	nautilus-sendto Pidgin plugin
-Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Pidgina
-Group:		X11/Applications
-Obsoletes:	nautilus-sendto-gaim
-Requires:	%{name} = %{version}-%{release}
-Requires:	pidgin >= 2.0
-
-%description pidgin
-A nautilus-sendto plugin for sending files via Pidgin.
-
-%description pidgin -l pl.UTF-8
-Wtyczka nautilus-sentdo do wysyłania plików poprzez Pidgina.
-
 %package gajim
 Summary:	nautilus-sendto Gajim plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Gajima
@@ -88,6 +74,20 @@ A nautilus-sendto plugin for sending files via GNOME Bluetooth.
 
 %description  gnome-bluetooth -l pl.UTF-8
 Wtyczka nautilus-sentdo do wysyłania plików poprzez GNOME Bluetooth.
+
+%package pidgin
+Summary:	nautilus-sendto Pidgin plugin
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Pidgina
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Requires:	pidgin >= 2.0
+Obsoletes:	nautilus-sendto-gaim
+
+%description pidgin
+A nautilus-sendto plugin for sending files via Pidgin.
+
+%description pidgin -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysyłania plików poprzez Pidgina.
 
 %package sylpheed
 Summary:	nautilus-sendto Sylpheed plugin
@@ -151,11 +151,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstevolution.so
 
-%files pidgin
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/pidgin/*.so
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstpidgin.so
-
 %files gajim
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstgajim.so
@@ -163,6 +158,11 @@ rm -rf $RPM_BUILD_ROOT
 %files gnome-bluetooth
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstbluetooth.so
+
+%files pidgin
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pidgin/*.so
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstpidgin.so
 
 %files sylpheed
 %defattr(644,root,root,755)
