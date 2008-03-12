@@ -1,46 +1,47 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	0.12
-Release:	0.2
+Version:	0.13.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/nautilus-sendto/0.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	9ec9a476be9a1c24ceddcfd76c6b3be2
-Patch0:		%{name}-gaim20.patch
-Patch1:		%{name}-gajim.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/0.13/%{name}-%{version}.tar.bz2
+# Source0-md5:	7e8a79e6e51e4bf96318aa8f9a37044b
+Patch0:		%{name}-gajim.patch
 URL:		http://www.es.gnome.org/~telemaco/
+BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.9.92
-BuildRequires:	gnome-bluetooth-devel >= 0.7.0
-BuildRequires:	gtk+2-devel >= 2:2.10.9
-BuildRequires:	intltool
-BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui >= 2.18.0
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	evolution-data-server-devel >= 2.22.0
+BuildRequires:	gettext-devel
+BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gtk+2-devel >= 2:2.12.8
+BuildRequires:	intltool >= 0.37.0
+BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.18.0.1
+BuildRequires:	nautilus-devel >= 2.22.0
 BuildRequires:	pidgin-devel >= 2.0
 BuildRequires:	pkgconfig
 Requires(post,preun):	GConf2
 Requires:	file-roller
-Requires:	nautilus >= 2.18.0.1
+Requires:	nautilus >= 2.22.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-nautilus-sendto provides a Nautilus context menu for sending
-files via other desktop applications.
+nautilus-sendto provides a Nautilus context menu for sending files via
+other desktop applications.
 
 %description -l pl.UTF-8
-nautilus-sendto dostarcza menu kontekstowe dla Nautilusa do
-wysyłania plików poprzez inne aplikacje biurkowe.
+nautilus-sendto dostarcza menu kontekstowe dla Nautilusa do wysyłania
+plików poprzez inne aplikacje biurkowe.
 
 %package evolution
 Summary:	nautilus-sendto Evolution plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Evolution
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	evolution >= 2.9.92
+Requires:	evolution >= 2.22.0
 
 %description evolution
 A nautilus-sendto plugin for sending files via Evolution.
@@ -104,13 +105,13 @@ Wtyczka nautilus-sentdo do wysyłania plików poprzez Sylpheeda.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--with-gajim
@@ -122,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/{pidgin,nautilus/extensions-1.0,nautilus-sendto/plugins}/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/{pidgin,nautilus/extensions-2.0,nautilus-sendto/plugins}/*.la
 
 %find_lang %{name}
 
@@ -138,14 +139,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/nautilus-sendto
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
-%attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/libnautilus-sendto.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-sendto.so
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/glade
 %{_sysconfdir}/gconf/schemas/nst.schemas
-%{_mandir}/man1/%{name}.*
+%{_mandir}/man1/%{name}.1*
 
 %files evolution
 %defattr(644,root,root,755)
@@ -161,7 +162,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files pidgin
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/pidgin/*.so
+%attr(755,root,root) %{_libdir}/pidgin/nautilus.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstpidgin.so
 
 %files sylpheed
