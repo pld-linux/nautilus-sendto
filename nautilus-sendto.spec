@@ -2,7 +2,7 @@ Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
 Version:	0.13.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/0.13/%{name}-%{version}.tar.bz2
@@ -68,7 +68,7 @@ Summary:	nautilus-sendto GNOME Bluetooth plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla GNOME Bluetooth
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	gnome-bluetooth >= 0.7.0
+Requires:	bluez-gnome >= 0.25
 
 %description gnome-bluetooth
 A nautilus-sendto plugin for sending files via GNOME Bluetooth.
