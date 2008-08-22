@@ -1,12 +1,12 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	1.0.0
+Version:	1.0.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	89261c1a4acf7d1077abdda8e1fdce4f
+# Source0-md5:	33f2a9b27a7641967f97493453ca60ac
 Patch0:		%{name}-gajim.patch
 URL:		http://www.es.gnome.org/~telemaco/
 BuildRequires:	GConf2-devel >= 2.22.0
@@ -75,6 +75,19 @@ A nautilus-sendto plugin for sending files via GNOME Bluetooth.
 
 %description  gnome-bluetooth -l pl.UTF-8
 Wtyczka nautilus-sentdo do wysyłania plików poprzez GNOME Bluetooth.
+
+%package icedove
+Summary:	nautilus-sendto Icedove plugin
+Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Icedove
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Requires:	icedove
+
+%description icedove
+A nautilus-sendto plugin for sending files via Icedove.
+
+%description icedove -l pl.UTF-8
+Wtyczka nautilus-sentdo do wysyłania plików poprzez Icedove.
 
 %package pidgin
 Summary:	nautilus-sendto Pidgin plugin
@@ -159,6 +172,10 @@ rm -rf $RPM_BUILD_ROOT
 %files gnome-bluetooth
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstbluetooth.so
+
+%files icedove
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstthunderbird.so
 
 %files pidgin
 %defattr(644,root,root,755)
