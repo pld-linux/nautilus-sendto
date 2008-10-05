@@ -1,12 +1,12 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	1.0.1
+Version:	1.1.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	33f2a9b27a7641967f97493453ca60ac
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.1/%{name}-%{version}.tar.bz2
+# Source0-md5:	fb2e115a33653496416847c61477b857
 Patch0:		%{name}-gajim.patch
 URL:		http://www.es.gnome.org/~telemaco/
 BuildRequires:	GConf2-devel >= 2.22.0
