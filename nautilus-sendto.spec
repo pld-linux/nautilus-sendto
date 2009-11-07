@@ -1,33 +1,32 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	1.1.5
-Release:	2
+Version:	2.28.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	8a5b342850bb84b63c7df033ef478654
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	1af541999a5ed753ed9a8c8ea007b4c7
 Patch0:		%{name}-gajim.patch
-URL:		http://www.es.gnome.org/~telemaco/
-BuildRequires:	GConf2-devel >= 2.22.0
+URL:		http://www.gnome.org/
+BuildRequires:	GConf2-devel >= 2.28.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	empathy-devel >= 2.26.0
-BuildRequires:	evolution-devel >= 2.22.0
+BuildRequires:	empathy-devel >= 2.28.0
+BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
-BuildRequires:	gupnp-av-devel >= 0.2.1
-BuildRequires:	intltool >= 0.37.0
-BuildRequires:	libglade2-devel >= 1:2.6.2
+BuildRequires:	gupnp-devel >= 0.13.0
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.26.0
+BuildRequires:	nautilus-devel >= 2.28.0
 BuildRequires:	pidgin-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	telepathy-glib-devel
 Requires(post,preun):	GConf2
-Requires:	nautilus >= 2.26.0
+Requires:	nautilus >= 2.28.0
 Suggests:	file-roller
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,7 +56,7 @@ Summary:	nautilus-sendto Empathy plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Empathy
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	empathy >= 2.26.0
+Requires:	empathy >= 2.28.0
 
 %description empathy
 A nautilus-sendto plugin for sending files via Empathy.
@@ -102,7 +101,7 @@ Summary:	nautilus-sendto GNOME Bluetooth plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla GNOME Bluetooth
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	bluez-gnome >= 0.25
+Requires:	gnome-bluetooth
 
 %description gnome-bluetooth
 A nautilus-sendto plugin for sending files via GNOME Bluetooth.
@@ -181,8 +180,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/plugins
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstremovable_devices.so
 %attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-sendto.so
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/glade
 %{_sysconfdir}/gconf/schemas/nst.schemas
 %{_mandir}/man1/%{name}.1*
 
@@ -197,8 +194,6 @@ rm -rf $RPM_BUILD_ROOT
 %files evolution
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstevolution.so
-%attr(755,root,root) %{_libdir}/evolution/*/plugins/liborg-gnome-evolution-send-attachments-to.so
-%{_libdir}/evolution/*/plugins/org-gnome-evolution-send-attachments-to.eplug
 
 %files gajim
 %defattr(644,root,root,755)
