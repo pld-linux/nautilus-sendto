@@ -1,13 +1,12 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	2.28.0
+Version:	2.28.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	1af541999a5ed753ed9a8c8ea007b4c7
-Patch0:		%{name}-gajim.patch
+# Source0-md5:	b37ab6eec43d95bef42bb8ed67ae290f
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.28.0
 BuildRequires:	autoconf >= 2.52
@@ -17,12 +16,12 @@ BuildRequires:	empathy-devel >= 2.28.0
 BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.28.0
-BuildRequires:	pidgin-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	telepathy-glib-devel
 Requires(post,preun):	GConf2
@@ -38,6 +37,18 @@ other desktop applications.
 nautilus-sendto dostarcza menu kontekstowe dla Nautilusa do wysyłania
 plików poprzez inne aplikacje biurkowe.
 
+%package apidocs
+Summary:	nautilus-sendto API documentation
+Summary(pl.UTF-8):	Dokumentacja API nautilus-sendto
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+nautilus-sendto API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API nautilus-sendto.
+
 %package cd-burner
 Summary:	nautilus-sendto CD/DVD Creator plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla kreatora CD/DVD
@@ -50,6 +61,18 @@ A nautilus-sendto plugin for sending files to CD/DVD Creator.
 
 %description cd-burner -l pl.UTF-8
 Wtyczka nautilus-sendto do wysyłania plików do kreatora CD/DVD.
+
+%package devel
+Summary:	Header files for nautilus-sendto
+Summary(pl.UTF-8):	Pliki nagłówkowe nautilus-sendto
+Group:		Development/Libraries
+Requires:	gtk+2-devel >= 2:2.16.0
+
+%description devel
+Header files for nautilus-sendto.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe nautilus-sendto.
 
 %package empathy
 Summary:	nautilus-sendto Empathy plugin
@@ -139,7 +162,6 @@ UPnP.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -149,6 +171,8 @@ UPnP.
 %{__autoheader}
 %{__automake}
 %configure \
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir} \
 	--disable-schemas-install
 
 %{__make}
@@ -157,7 +181,8 @@ UPnP.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/{evolution/*/plugins,pidgin,nautilus/extensions-2.0,nautilus-sendto/plugins}/*.la
 
@@ -180,12 +205,22 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/plugins
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstremovable_devices.so
 %attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-sendto.so
+%{_datadir}/nautilus-sendto
 %{_sysconfdir}/gconf/schemas/nst.schemas
 %{_mandir}/man1/%{name}.1*
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/nautilus-sendto
 
 %files cd-burner
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstburn.so
+
+%files devel
+%defattr(644,root,root,755)
+%{_includedir}/nautilus-sendto
+%{_pkgconfigdir}/nautilus-sendto.pc
 
 %files empathy
 %defattr(644,root,root,755)
@@ -205,7 +240,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files pidgin
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/pidgin/nautilus.so
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstpidgin.so
 
 %files upnp
