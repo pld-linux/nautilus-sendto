@@ -2,7 +2,7 @@ Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
 Version:	2.28.3
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/%{name}-%{version}.tar.bz2
@@ -23,6 +23,7 @@ BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.28.0
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.0
 BuildRequires:	telepathy-glib-devel
 Requires(post,preun):	GConf2
 Requires:	nautilus >= 2.28.0
@@ -162,6 +163,9 @@ UPnP.
 
 %prep
 %setup -q
+
+%{__sed} -i -e 's/^en@shaw//' po/LINGUAS
+%{__rm} -f po/en@shaw.po
 
 %build
 %{__intltoolize}
