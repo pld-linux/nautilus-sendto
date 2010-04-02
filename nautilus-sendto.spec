@@ -1,12 +1,12 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	2.28.3
-Release:	2
+Version:	2.28.4
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	835c18ca2334c9d217eeffb34257c2ec
+# Source0-md5:	e68236367190d01a31d11fb746822bed
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.28.0
 BuildRequires:	autoconf >= 2.52
@@ -177,7 +177,8 @@ UPnP.
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
-	--disable-schemas-install
+	--disable-schemas-install \
+	--disable-silent-rules
 
 %{__make}
 
