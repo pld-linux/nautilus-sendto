@@ -12,7 +12,6 @@ BuildRequires:	GConf2-devel >= 2.28.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	empathy-devel >= 2.28.0
 BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
@@ -74,19 +73,6 @@ Header files for nautilus-sendto.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe nautilus-sendto.
-
-%package empathy
-Summary:	nautilus-sendto Empathy plugin
-Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Empathy
-Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
-Requires:	empathy >= 2.28.0
-
-%description empathy
-A nautilus-sendto plugin for sending files via Empathy.
-
-%description empathy -l pl.UTF-8
-Wtyczka nautilus-sendto do wysyłania plików poprzez Empathy.
 
 %package evolution
 Summary:	nautilus-sendto Evolution plugin
@@ -226,10 +212,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_includedir}/nautilus-sendto
 %{_pkgconfigdir}/nautilus-sendto.pc
-
-%files empathy
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstempathy.so
 
 %files evolution
 %defattr(644,root,root,755)
