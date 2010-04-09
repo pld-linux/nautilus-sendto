@@ -2,7 +2,7 @@ Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
 Version:	2.28.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/%{name}-%{version}.tar.bz2
@@ -15,8 +15,8 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	gtk+2-devel >= 2:2.16.0
+BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
@@ -106,19 +106,6 @@ A nautilus-sendto plugin for sending files via Gajim.
 %description gajim -l pl.UTF-8
 Wtyczka nautilus-sentdo do wysyłania plików poprzez Gajima.
 
-%package gnome-bluetooth
-Summary:	nautilus-sendto GNOME Bluetooth plugin
-Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla GNOME Bluetooth
-Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
-Requires:	gnome-bluetooth
-
-%description gnome-bluetooth
-A nautilus-sendto plugin for sending files via GNOME Bluetooth.
-
-%description  gnome-bluetooth -l pl.UTF-8
-Wtyczka nautilus-sentdo do wysyłania plików poprzez GNOME Bluetooth.
-
 %package pidgin
 Summary:	nautilus-sendto Pidgin plugin
 Summary(pl.UTF-8):	Wtyczka nautilus-sendto dla Pidgina
@@ -177,6 +164,9 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/{evolution/*/plugins,pidgin,nautilus/extensions-2.0,nautilus-sendto/plugins}/*.la
 
+# provided by empathy.spec and gnome-bluetooth.spec
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/libnst{empathy,bluetooth}.so
+
 %find_lang %{name}
 
 %clean
@@ -220,10 +210,6 @@ rm -rf $RPM_BUILD_ROOT
 %files gajim
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstgajim.so
-
-%files gnome-bluetooth
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libnstbluetooth.so
 
 %files pidgin
 %defattr(644,root,root,755)
