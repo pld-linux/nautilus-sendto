@@ -1,30 +1,29 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	2.28.5
+Version:	2.32.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	324e0e22953d410947b8de9b163fa407
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.32/%{name}-%{version}.tar.bz2
+# Source0-md5:	e4f44084976ac4c6602a02ee3700e6f5
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.28.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
+BuildRequires:	gtk+2-devel >= 2:2.18.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.28.0
+BuildRequires:	nautilus-devel >= 2.32.0
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
-BuildRequires:	telepathy-glib-devel
-Requires(post,preun):	GConf2
+Requires(post,postun):	glib2 >= 1:2.26.0
 Requires:	nautilus >= 2.28.0
 Suggests:	file-roller
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -66,7 +65,8 @@ Wtyczka nautilus-sendto do wysyłania plików do kreatora CD/DVD.
 Summary:	Header files for nautilus-sendto
 Summary(pl.UTF-8):	Pliki nagłówkowe nautilus-sendto
 Group:		Development/Libraries
-Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	glib2-devel >= 1:2.26.0
+Requires:	gtk+2-devel >= 2:2.18.0
 
 %description devel
 Header files for nautilus-sendto.
@@ -150,7 +150,6 @@ UPnP.
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
-	--disable-schemas-install \
 	--disable-silent-rules
 
 %{__make}
@@ -173,10 +172,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/libnst{empathy,bluetooth}.so
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install nst.schemas
+glib-compile-schemas %{_datadir}/glib-2.0/schemas
 
-%preun
-%gconf_schema_uninstall nst.schemas
+%postun
+glib-compile-schemas %{_datadir}/glib-2.0/schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -186,8 +185,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/plugins
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstremovable_devices.so
 %attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-sendto.so
+%{_datadir}/GConf/gsettings/nautilus-sendto-convert
+%{_datadir}/glib-2.0/schemas/org.gnome.Nautilus.Sendto.gschema.xml
 %{_datadir}/nautilus-sendto
-%{_sysconfdir}/gconf/schemas/nst.schemas
 %{_mandir}/man1/%{name}.1*
 
 %files apidocs
