@@ -2,7 +2,7 @@ Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
 Version:	2.32.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.32/%{name}-%{version}.tar.bz2
@@ -22,6 +22,7 @@ BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.32.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	sed >= 4.0
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires:	nautilus >= 2.28.0
@@ -172,10 +173,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/libnst{empathy,bluetooth}.so
 rm -rf $RPM_BUILD_ROOT
 
 %post
-glib-compile-schemas %{_datadir}/glib-2.0/schemas
+%glib_compile_schemas
 
 %postun
-glib-compile-schemas %{_datadir}/glib-2.0/schemas
+%glib_compile_schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
