@@ -1,31 +1,30 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	2.32.0
-Release:	2
+Version:	3.0.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	e4f44084976ac4c6602a02ee3700e6f5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/3.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	09ca82e6ccba4bc3f16c13b6d7492dcd
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	evolution-data-server-devel >= 2.22.0
+BuildRequires:	evolution-data-server-devel >= 2.91.90
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.32.0
+BuildRequires:	nautilus-devel >= 2.90.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.592
-BuildRequires:	sed >= 4.0
-Requires(post,postun):	glib2 >= 1:2.26.0
-Requires:	nautilus >= 2.28.0
+Requires(post,postun):	glib2 >= 1:2.28.0
+Requires:	nautilus >= 2.90.0
 Suggests:	file-roller
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -66,8 +65,8 @@ Wtyczka nautilus-sendto do wysyłania plików do kreatora CD/DVD.
 Summary:	Header files for nautilus-sendto
 Summary(pl.UTF-8):	Pliki nagłówkowe nautilus-sendto
 Group:		Development/Libraries
-Requires:	glib2-devel >= 1:2.26.0
-Requires:	gtk+2-devel >= 2:2.18.0
+Requires:	glib2-devel >= 1:2.28.0
+Requires:	gtk+3-devel >= 3.0.0
 
 %description devel
 Header files for nautilus-sendto.
@@ -138,9 +137,6 @@ UPnP.
 %prep
 %setup -q
 
-%{__sed} -i -e 's/^en@shaw//' po/LINGUAS
-%{__rm} -f po/en@shaw.po
-
 %build
 %{__intltoolize}
 %{__libtoolize}
@@ -159,13 +155,12 @@ UPnP.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/{evolution/*/plugins,pidgin,nautilus/extensions-2.0,nautilus-sendto/plugins}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{nautilus/extensions-3.0,nautilus-sendto/plugins}/*.la
 
-# provided by empathy.spec and gnome-bluetooth.spec
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/plugins/libnst{empathy,bluetooth}.so
+# shipped with nautilus
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/libnautilus-sendto.so
 
 %find_lang %{name}
 
@@ -185,7 +180,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnstremovable_devices.so
-%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-sendto.so
 %{_datadir}/GConf/gsettings/nautilus-sendto-convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Nautilus.Sendto.gschema.xml
 %{_datadir}/nautilus-sendto
