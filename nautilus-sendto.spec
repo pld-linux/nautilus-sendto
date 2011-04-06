@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
 Version:	3.0.0
 Release:	1
-License:	GPL v2
+License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/3.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	09ca82e6ccba4bc3f16c13b6d7492dcd
@@ -11,7 +11,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	evolution-data-server-devel >= 2.91.90
+BuildRequires:	evolution-data-server-devel >= 3.0.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.20.0
@@ -20,11 +20,11 @@ BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	gupnp-devel >= 0.13.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.90.0
+BuildRequires:	nautilus-devel >= 3.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.592
 Requires(post,postun):	glib2 >= 1:2.28.0
-Requires:	nautilus >= 2.90.0
+Requires:	nautilus >= 3.0.0
 Suggests:	file-roller
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
