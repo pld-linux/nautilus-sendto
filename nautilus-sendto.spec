@@ -1,12 +1,12 @@
 Summary:	Nautilus context menu for sending files
 Summary(pl.UTF-8):	Menu kontekstowe nautilusa do wysyłania plików
 Name:		nautilus-sendto
-Version:	3.0.1
-Release:	3
+Version:	3.0.2
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/3.0/%{name}-%{version}.tar.xz
-# Source0-md5:	291b01089bdd02e46c2e47508e75e013
+# Source0-md5:	cfd7e91cdd27adaed50bf7050229c8bc
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
