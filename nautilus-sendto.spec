@@ -14,7 +14,7 @@ BuildRequires:	gobject-introspection-devel >= 0.6.7
 BuildRequires:	meson >= 0.40.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.28.0
