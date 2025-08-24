@@ -5,7 +5,7 @@ Version:	3.8.6
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/3.8/%{name}-%{version}.tar.xz
+Source0:	https://download.gnome.org/sources/nautilus-sendto/3.8/%{name}-%{version}.tar.xz
 # Source0-md5:	e4ac5e7b504bbccc5697cce07e373eae
 URL:		https://wiki.gnome.org/Apps/Files
 BuildRequires:	gettext-tools
